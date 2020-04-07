@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Mysql慢查询报告</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <h1>Mysql慢查询报告</h1>
+            <hr>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <!--<th>ID</th>-->
+                    <th>查询次数</th>
+                    <th>慢查询95时间</th>
+                    <th>慢查询中位数时间</th>
+                    <th>慢查询最长时间</th>
+                    <th>慢查询最短时间</th>
+                    <th>语句操作表95值</th>
+                    <th>慢查询涉及表</th>
+                    <th>慢查询数据库</th>
+                    <th>慢查询语句</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                
+                
+                    <tr class="danger">
+                    
+                    <td>1</td>
+                    <td>53.718914s</td>
+                    <td>53.718914s</td>
+                    <td>53.718914s</td>
+                    <td>53.718914s</td>
+                    <td>489</td>
+                    <td>[u'smart_telescope_entries', u'face_analyze_task', u'go_analyze_task', u'video_linhui_infos', u'ROUTINES']</td>
+                    <td>ai_server</td>
+                    <td>
+                        <!-- 按钮触发模态框 -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#4603CB5CEABB1AA55E81FA9A176A4497">
+                            查看Sql语句
+                        </button>
+                    </td>
+                </tr>
+
+                <div class="container-fluid text-center">
+                    <!-- 模态框（Modal） -->
+                    <div class="modal fade" id="4603CB5CEABB1AA55E81FA9A176A4497" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        ×
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        Sql
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <code>SELECT * FROM `go_analyze_task` LIMIT 0,1000</code>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">关闭
+                                    </button>
+                                    <!--<button type="button" class="btn btn-primary">-->
+                                    <!--提交更改-->
+                                    <!--</button>-->
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal -->
+                    </div>
+
+                    
+                
+                    <tr class="danger">
+                    
+                    <td>1</td>
+                    <td>29.980047s</td>
+                    <td>29.980047s</td>
+                    <td>29.980047s</td>
+                    <td>29.980047s</td>
+                    <td>1</td>
+                    <td>[u'smart_telescope_entries', u'face_analyze_task', u'go_analyze_task', u'video_linhui_infos', u'ROUTINES']</td>
+                    <td>smart_search</td>
+                    <td>
+                        <!-- 按钮触发模态框 -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#CB735569943D1A5AD3D5901364231981">
+                            查看Sql语句
+                        </button>
+                    </td>
+                </tr>
+
+                <div class="container-fluid text-center">
+                    <!-- 模态框（Modal） -->
+                    <div class="modal fade" id="CB735569943D1A5AD3D5901364231981" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        ×
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        Sql
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <code>SHOW INDEX FROM `video_linhui_infos`</code>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">关闭
+                                    </button>
+                                    <!--<button type="button" class="btn btn-primary">-->
+                                    <!--提交更改-->
+                                    <!--</button>-->
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal -->
+                    </div>
+
+                    
+                
+                    <tr class="danger">
+                    
+                    <td>1</td>
+                    <td>19.568008s</td>
+                    <td>19.568008s</td>
+                    <td>19.568008s</td>
+                    <td>19.568008s</td>
+                    <td>0</td>
+                    <td>[u'smart_telescope_entries', u'face_analyze_task', u'go_analyze_task', u'video_linhui_infos', u'ROUTINES']</td>
+                    <td>ai_server</td>
+                    <td>
+                        <!-- 按钮触发模态框 -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#3118343C89D51519BBAE41F2F6AA3A6D">
+                            查看Sql语句
+                        </button>
+                    </td>
+                </tr>
+
+                <div class="container-fluid text-center">
+                    <!-- 模态框（Modal） -->
+                    <div class="modal fade" id="3118343C89D51519BBAE41F2F6AA3A6D" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        ×
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        Sql
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <code>UPDATE face_analyze_task SET success_time=1570871539009,result='{"statistics": {"total_face": 0, "gender_statistics": {"male_num": 0, "female_num": 0}, "age_statistics": {"21~30": 0, "0~10": 0, "31~40": 0, "51~60": 0, "41~50": 0, "91~100": 0, "81~90": 0, "61~70": 0, "71~80": 0, "11~20": 0}}, "error_message": "", "took": 118.9032, "task": {"task_id": "23ba1866-ecd0-11e9-a3b0-001e67d00928", "file_type": "video", "start_time": "2019-10-12 17:10:32.129000", "success_time": 1570871539009, "wait_time": "2019-10-12 17:10:30.826000", "callback_params": {"task_id": "f97a724a-eccf-11e9-929c-001e67d00928"}, "callback_url": "http://127.0.0.1:8011/_callback/analyze", "file_path": "personflow_datas/xuzhou/20191001/card1@20191001@12.00.00-13.00.00.mp4"}, "faces": [], "error_code": 0}',status=0xf3&status|8 WHERE task_id='23ba1866-ecd0-11e9-a3b0-001e67d00928' AND status<64</code>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">关闭
+                                    </button>
+                                    <!--<button type="button" class="btn btn-primary">-->
+                                    <!--提交更改-->
+                                    <!--</button>-->
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal -->
+                    </div>
+
+                    
+                
+                    <tr class="danger">
+                    
+                    <td>2</td>
+                    <td>17.495652s</td>
+                    <td>12.244922s</td>
+                    <td>17.495652s</td>
+                    <td>6.994191s</td>
+                    <td>3</td>
+                    <td>[u'smart_telescope_entries', u'face_analyze_task', u'go_analyze_task', u'video_linhui_infos', u'ROUTINES']</td>
+                    <td>smart_search</td>
+                    <td>
+                        <!-- 按钮触发模态框 -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#1159445651BB9FEBD74CF3459D7DC8EA">
+                            查看Sql语句
+                        </button>
+                    </td>
+                </tr>
+
+                <div class="container-fluid text-center">
+                    <!-- 模态框（Modal） -->
+                    <div class="modal fade" id="1159445651BB9FEBD74CF3459D7DC8EA" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        ×
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        Sql
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <code>SELECT * FROM `video_linhui_infos` LIMIT 0,1000</code>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">关闭
+                                    </button>
+                                    <!--<button type="button" class="btn btn-primary">-->
+                                    <!--提交更改-->
+                                    <!--</button>-->
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal -->
+                    </div>
+
+                    
+                
+                    <tr class="danger">
+                    
+                    <td>8</td>
+                    <td>16.809352s</td>
+                    <td>9.360076s</td>
+                    <td>17.150103s</td>
+                    <td>6.120610s</td>
+                    <td>0</td>
+                    <td>[u'smart_telescope_entries', u'face_analyze_task', u'go_analyze_task', u'video_linhui_infos', u'ROUTINES']</td>
+                    <td>smart_search</td>
+                    <td>
+                        <!-- 按钮触发模态框 -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#BD3B16C0829B1DD91A9FCA6D3D075437">
+                            查看Sql语句
+                        </button>
+                    </td>
+                </tr>
+
+                <div class="container-fluid text-center">
+                    <!-- 模态框（Modal） -->
+                    <div class="modal fade" id="BD3B16C0829B1DD91A9FCA6D3D075437" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        ×
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        Sql
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <code>update `smart_telescope_entries` set `should_display_on_index` = 0 where `type` = 'exception' and `family_hash` = '252a647dce0dbc49ee29fcab0a5ed368'</code>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">关闭
+                                    </button>
+                                    <!--<button type="button" class="btn btn-primary">-->
+                                    <!--提交更改-->
+                                    <!--</button>-->
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal -->
+                    </div>
+
+                    
+                
+                    <tr class="danger">
+                    
+                    <td>1</td>
+                    <td>16.697038s</td>
+                    <td>16.697038s</td>
+                    <td>16.697038s</td>
+                    <td>16.697038s</td>
+                    <td>0</td>
+                    <td>[u'smart_telescope_entries', u'face_analyze_task', u'go_analyze_task', u'video_linhui_infos', u'ROUTINES']</td>
+                    <td>ai_server</td>
+                    <td>
+                        <!-- 按钮触发模态框 -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#2EC36AC3FB8E692C2646BD095EEEE758">
+                            查看Sql语句
+                        </button>
+                    </td>
+                </tr>
+
+                <div class="container-fluid text-center">
+                    <!-- 模态框（Modal） -->
+                    <div class="modal fade" id="2EC36AC3FB8E692C2646BD095EEEE758" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        ×
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        Sql
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <code>INSERT INTO face_analyze_task(task_id, params, wait_time, start_time, success_time, fail_time, callback_time, cancel_time, callback_error, result, status) values ('8cc02d86-ece0-11e9-a3b0-001e67d00928', '{"known_face_db_id": "b49ba812-e042-11e9-94b7-001e67d00928", "quality_threshold": 0.06, "file_type": "video", "callback_params": {"task_id": "7acc78b3-ecd9-11e9-929c-001e67d00928"}, "recognize_threshold": 0.9, "thumbnail_dir": "face_thumbnail/video", "callback_url": "http://127.0.0.1:8011/_callback/analyze", "file_path": "personflow_datas/xuzhou/20191001/card1@20191001@20.00.00-21.00.00.mp4"}', 1570878479231, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1)</code>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">关闭
+                                    </button>
+                                    <!--<button type="button" class="btn btn-primary">-->
+                                    <!--提交更改-->
+                                    <!--</button>-->
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal -->
+                    </div>
+
+                    
+                
+                    <tr class="danger">
+                    
+                    <td>1</td>
+                    <td>13.746254s</td>
+                    <td>13.746254s</td>
+                    <td>13.746254s</td>
+                    <td>13.746254s</td>
+                    <td>0</td>
+                    <td>[u'smart_telescope_entries', u'face_analyze_task', u'go_analyze_task', u'video_linhui_infos', u'ROUTINES']</td>
+                    <td>smart_search</td>
+                    <td>
+                        <!-- 按钮触发模态框 -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#B66437C4D5457AD026922CFA60F1B022">
+                            查看Sql语句
+                        </button>
+                    </td>
+                </tr>
+
+                <div class="container-fluid text-center">
+                    <!-- 模态框（Modal） -->
+                    <div class="modal fade" id="B66437C4D5457AD026922CFA60F1B022" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        ×
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        Sql
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <code>TRUNCATE TABLE `video_linhui_infos`</code>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">关闭
+                                    </button>
+                                    <!--<button type="button" class="btn btn-primary">-->
+                                    <!--提交更改-->
+                                    <!--</button>-->
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal -->
+                    </div>
+
+                    
+                
+                    <tr class="danger">
+                    
+                    <td>5</td>
+                    <td>10.835458s</td>
+                    <td>10.319484s</td>
+                    <td>10.957033s</td>
+                    <td>10.644358s</td>
+                    <td>0</td>
+                    <td>[u'smart_telescope_entries', u'face_analyze_task', u'go_analyze_task', u'video_linhui_infos', u'ROUTINES']</td>
+                    <td>ai_server</td>
+                    <td>
+                        <!-- 按钮触发模态框 -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#1A866D985610945D9A47DB2CDD53C00B">
+                            查看Sql语句
+                        </button>
+                    </td>
+                </tr>
+
+                <div class="container-fluid text-center">
+                    <!-- 模态框（Modal） -->
+                    <div class="modal fade" id="1A866D985610945D9A47DB2CDD53C00B" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        ×
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        Sql
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <code>UPDATE go_analyze_task SET start_time=1576813375877,status=status|2 WHERE task_id='b166d655-eccb-11e9-929c-001e67d00928'</code>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">关闭
+                                    </button>
+                                    <!--<button type="button" class="btn btn-primary">-->
+                                    <!--提交更改-->
+                                    <!--</button>-->
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal -->
+                    </div>
+
+                    
+                
+                    <tr class="danger">
+                    
+                    <td>3</td>
+                    <td>10.835458s</td>
+                    <td>7.333865s</td>
+                    <td>11.224088s</td>
+                    <td>5.436003s</td>
+                    <td>833</td>
+                    <td>[u'smart_telescope_entries', u'face_analyze_task', u'go_analyze_task', u'video_linhui_infos', u'ROUTINES']</td>
+                    <td>ai_server</td>
+                    <td>
+                        <!-- 按钮触发模态框 -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#1C8B819FF283A805A41E985FCB665991">
+                            查看Sql语句
+                        </button>
+                    </td>
+                </tr>
+
+                <div class="container-fluid text-center">
+                    <!-- 模态框（Modal） -->
+                    <div class="modal fade" id="1C8B819FF283A805A41E985FCB665991" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        ×
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        Sql
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <code>SELECT * FROM `face_analyze_task` LIMIT 0,1000</code>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">关闭
+                                    </button>
+                                    <!--<button type="button" class="btn btn-primary">-->
+                                    <!--提交更改-->
+                                    <!--</button>-->
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal -->
+                    </div>
+
+                    
+                
+                    <tr class="danger">
+                    
+                    <td>8</td>
+                    <td>10.319484s</td>
+                    <td>7.700558s</td>
+                    <td>10.800575s</td>
+                    <td>6.250595s</td>
+                    <td>1</td>
+                    <td>[u'smart_telescope_entries', u'face_analyze_task', u'go_analyze_task', u'video_linhui_infos', u'ROUTINES']</td>
+                    <td>ai_server</td>
+                    <td>
+                        <!-- 按钮触发模态框 -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#088A69F8136E21EB20AD0768EF15675A">
+                            查看Sql语句
+                        </button>
+                    </td>
+                </tr>
+
+                <div class="container-fluid text-center">
+                    <!-- 模态框（Modal） -->
+                    <div class="modal fade" id="088A69F8136E21EB20AD0768EF15675A" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        ×
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        Sql
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <code>SELECT wait_time,start_time,cancel_time FROM face_analyze_task WHERE task_id='2468e904-ecd0-11e9-a3b0-001e67d00928'</code>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">关闭
+                                    </button>
+                                    <!--<button type="button" class="btn btn-primary">-->
+                                    <!--提交更改-->
+                                    <!--</button>-->
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal -->
+                    </div>
+
+                    
+                
+                    <tr class="danger">
+                    
+                    <td>1</td>
+                    <td>9.444335s</td>
+                    <td>9.444335s</td>
+                    <td>9.444335s</td>
+                    <td>9.444335s</td>
+                    <td>0</td>
+                    <td>[u'smart_telescope_entries', u'face_analyze_task', u'go_analyze_task', u'video_linhui_infos', u'ROUTINES']</td>
+                    <td>smart_search</td>
+                    <td>
+                        <!-- 按钮触发模态框 -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#E1F46640E3A5FA10012165C0153E0B28">
+                            查看Sql语句
+                        </button>
+                    </td>
+                </tr>
+
+                <div class="container-fluid text-center">
+                    <!-- 模态框（Modal） -->
+                    <div class="modal fade" id="E1F46640E3A5FA10012165C0153E0B28" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        ×
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        Sql
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <code>SELECT SPECIFIC_NAME, ROUTINE_TYPE, DTD_IDENTIFIER, IS_DETERMINISTIC, SQL_DATA_ACCESS, SECURITY_TYPE, DEFINER FROM `information_schema`.`ROUTINES` WHERE `ROUTINE_SCHEMA` = 'smart_search'</code>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">关闭
+                                    </button>
+                                    <!--<button type="button" class="btn btn-primary">-->
+                                    <!--提交更改-->
+                                    <!--</button>-->
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal -->
+                    </div>
+
+                    
+                
+                    <tr class="danger">
+                    
+                    <td>3</td>
+                    <td>7.700558s</td>
+                    <td>6.652032s</td>
+                    <td>7.781885s</td>
+                    <td>6.509388s</td>
+                    <td>1</td>
+                    <td>[u'smart_telescope_entries', u'face_analyze_task', u'go_analyze_task', u'video_linhui_infos', u'ROUTINES']</td>
+                    <td>smart_search</td>
+                    <td>
+                        <!-- 按钮触发模态框 -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#7C88963CE25A7F4209EF5E045FDC9F76">
+                            查看Sql语句
+                        </button>
+                    </td>
+                </tr>
+
+                <div class="container-fluid text-center">
+                    <!-- 模态框（Modal） -->
+                    <div class="modal fade" id="7C88963CE25A7F4209EF5E045FDC9F76" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        ×
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        Sql
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <code>select count(*) as aggregate from `smart_telescope_entries` where `type` = 'exception' and `family_hash` = '252a647dce0dbc49ee29fcab0a5ed368'</code>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">关闭
+                                    </button>
+                                    <!--<button type="button" class="btn btn-primary">-->
+                                    <!--提交更改-->
+                                    <!--</button>-->
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal -->
+                    </div>
+
+                    
+                
+                    <tr class="danger">
+                    
+                    <td>4</td>
+                    <td>6.984633s</td>
+                    <td>6.984633s</td>
+                    <td>7.164181s</td>
+                    <td>6.975881s</td>
+                    <td>0</td>
+                    <td>[u'smart_telescope_entries', u'face_analyze_task', u'go_analyze_task', u'video_linhui_infos', u'ROUTINES']</td>
+                    <td>ai_server</td>
+                    <td>
+                        <!-- 按钮触发模态框 -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#EDBC971AEC392917AA353644DE4C4CB4">
+                            查看Sql语句
+                        </button>
+                    </td>
+                </tr>
+
+                <div class="container-fluid text-center">
+                    <!-- 模态框（Modal） -->
+                    <div class="modal fade" id="EDBC971AEC392917AA353644DE4C4CB4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        ×
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        Sql
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <code>administrator command: Quit</code>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">关闭
+                                    </button>
+                                    <!--<button type="button" class="btn btn-primary">-->
+                                    <!--提交更改-->
+                                    <!--</button>-->
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal -->
+                    </div>
+
+                    
+                
+                    <tr class="danger">
+                    
+                    <td>3</td>
+                    <td>6.033589s</td>
+                    <td>5.746275s</td>
+                    <td>6.123149s</td>
+                    <td>5.823116s</td>
+                    <td>46</td>
+                    <td>[u'smart_telescope_entries', u'face_analyze_task', u'go_analyze_task', u'video_linhui_infos', u'ROUTINES']</td>
+                    <td>ai_server</td>
+                    <td>
+                        <!-- 按钮触发模态框 -->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#E8CDFBBD8296CCC9FAACF251B0E03E1B">
+                            查看Sql语句
+                        </button>
+                    </td>
+                </tr>
+
+                <div class="container-fluid text-center">
+                    <!-- 模态框（Modal） -->
+                    <div class="modal fade" id="E8CDFBBD8296CCC9FAACF251B0E03E1B" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        ×
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        Sql
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <code>SELECT `task_id`,`result` FROM go_analyze_task WHERE `task_id` in('886506ad-ea34-11e9-ad8a-001e67d00928','8864c4b8-ea34-11e9-ad8a-001e67d00928','88668d72-ea34-11e9-ad8a-001e67d00928','88633a3d-ea34-11e9-ad8a-001e67d00928','8866cf98-ea34-11e9-ad8a-001e67d00928','886bb3c8-ea34-11e9-ad8a-001e67d00928','88750e02-ea34-11e9-ad8a-001e67d00928','883f6e41-ea34-11e9-ad8a-001e67d00928','885a6114-ea34-11e9-ad8a-001e67d00928','885c2705-ea34-11e9-ad8a-001e67d00928','88663e17-ea34-11e9-ad8a-001e67d00928','886b45a2-ea34-11e9-ad8a-001e67d00928','885ab29e-ea34-11e9-ad8a-001e67d00928','886b0be2-ea34-11e9-ad8a-001e67d00928','886b74e1-ea34-11e9-ad8a-001e67d00928','88691faf-ea34-11e9-ad8a-001e67d00928','88755f8c-ea34-11e9-ad8a-001e67d00928','8875a77d-ea34-11e9-ad8a-001e67d00928','8879c9e9-ea34-11e9-ad8a-001e67d00928','887a210f-ea34-11e9-ad8a-001e67d00928','887a5e1b-ea34-11e9-ad8a-001e67d00928','89921cc7-ea34-11e9-ad8a-001e67d00928','89aeb281-ea34-11e9-ad8a-001e67d00928','89b73086-ea34-11e9-ad8a-001e67d00928','89c7a783-ea34-11e9-ad8a-001e67d00928','89cb90a7-ea34-11e9-ad8a-001e67d00928','89e58d24-ea34-11e9-ad8a-001e67d00928','89e67693-ea34-11e9-ad8a-001e67d00928','89e7d99b-ea34-11e9-ad8a-001e67d00928','89e8aa39-ea34-11e9-ad8a-001e67d00928','89e94988-ea34-11e9-ad8a-001e67d00928','8a0b1223-ea34-11e9-ad8a-001e67d00928','8a1090a8-ea34-11e9-ad8a-001e67d00928')</code>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">关闭
+                                    </button>
+                                    <!--<button type="button" class="btn btn-primary">-->
+                                    <!--提交更改-->
+                                    <!--</button>-->
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal -->
+                    </div>
+
+                    
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
